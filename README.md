@@ -29,7 +29,7 @@ This project was developed with the following technologies:
 - TailwindCSS
 - TypeScript
 - Zustand
-- React Query
+- React Hook Form
 - Zod
 
 ## ✨ Link
