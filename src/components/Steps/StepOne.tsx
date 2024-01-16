@@ -7,21 +7,27 @@ import { useForm } from "react-hook-form"
 import { PersonalFormSchema, personalFormSchema } from "@/schemas/personal-form-schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useData } from "@/hook/useData"
+import { normalizePhoneNumber } from "@/utils/mask"
 
 
 export function StepOne() {
     const { setStep } = useStep()
-    const { setPersonal } = useData()
-    const { register, handleSubmit, formState: { errors } } = useForm<PersonalFormSchema>({
+    const { setPersonal, personal } = useData()
+    const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<PersonalFormSchema>({
         resolver: zodResolver(personalFormSchema)
     })
-
     async function handlePersonalForm(data: PersonalFormSchema) {
         if (data) {
             setPersonal(data)
             setStep(2)
         }
     }
+
+    function handleInputChange(e: any) {
+        let valueInputNumber = e.target.value
+        setValue('phoneNumber', normalizePhoneNumber(valueInputNumber))
+    }
+
     return (
         <div className="flex gap-12 h-full">
             <StepOptions />
@@ -35,22 +41,27 @@ export function StepOne() {
                         <div className="space-y-1">
                             <Label htmlFor="name" className="text-sm font-normal">Name</Label>
                             {errors.name && <span className="float-right text-red-600 text-xs ">This field is required</span>}
-                            <Input className="h-10 font-medium placeholder:text-cool-gray " placeholder="e.g. Stephen King" {...register('name')} />
+                            <Input className="h-10 font-medium placeholder:text-cool-gray" defaultValue={personal.name} placeholder="e.g. Stephen King" {...register('name')} />
 
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="email" className="text-sm font-normal">Email Address</Label>
                             {errors.email && <span className="float-right text-red-600 text-xs ">This field is required</span>}
-                            <Input type="email" className="h-10 font-medium placeholder:text-cool-gray " placeholder="e.g. stephanking@lorem.com" {...register('email')} />
+                            <Input type="email" className="h-10 font-medium placeholder:text-cool-gray " defaultValue={personal.email} placeholder="e.g. stephanking@lorem.com" {...register('email')} />
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="phoneNumber" className="text-sm font-normal">Phone Number</Label>
                             {errors.phoneNumber && <span className="float-right text-red-600 text-xs ">This field is required</span>}
-                            <Input className="h-10 font-medium placeholder:text-cool-gray " placeholder="e.g. +1 234 567 890" {...register('phoneNumber')} />
+                            <Input
+                                className="h-10 font-medium placeholder:text-cool-gray "
+                                defaultValue={personal.phoneNumber} placeholder="e.g. +1 234 567 890" {...register('phoneNumber')}
+                                onChangeCapture={(e) => handleInputChange(e)}
+                            />
+
                         </div>
                     </div>
 
-                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/90 ml-auto" type="submit" >Next Step</Button>
+                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/80 ml-auto" type="submit" >Next Step</Button>
 
                 </form>
 

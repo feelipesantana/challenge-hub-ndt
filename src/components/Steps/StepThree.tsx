@@ -25,8 +25,8 @@ export function StepThree() {
                     </div>
                 </div>
                 <div className="flex justify-between">
-                    <Button className="w-24 text-cool-gray" variant={"ghost"} onClick={() => setStep(2)}>Go back</Button>
-                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/90 ml-auto" onClick={() => setStep(4)}>Next Step</Button>
+                    <Button className="w-24 text-cool-gray transition duration-300 hover:text-marine-blue" variant={"ghost"} onClick={() => setStep(2)}>Go back</Button>
+                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/80 ml-auto" onClick={() => setStep(4)}>Next Step</Button>
                 </div>
             </div>
         </div >

@@ -30,7 +30,7 @@ export function StepFour() {
                         <div className="flex justify-between items-center">
                             <div className="flex flex-col items-start gap-0">
                                 <span className="font-medium">{plan.item} {valueType === "M" ? '(Monthly)' : '(Yearly)'}</span>
-                                <Button variant={"link"} onClick={() => setStep(2)} className=" h-6 inline-block text-sm font-medium p-0 underline text-cool-gray">
+                                <Button variant={"link"} onClick={() => setStep(2)} className=" h-6 inline-block text-sm font-medium p-0 underline text-cool-gray hover:text-pastel-blue">
                                     Change
                                 </Button>
                             </div>
@@ -60,8 +60,8 @@ export function StepFour() {
                     </div>
                 </div>
                 <div className="flex justify-between">
-                    <Button className="w-24 text-cool-gray" variant={"ghost"} onClick={() => setStep(3)}>Go back</Button>
-                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/90 ml-auto" onClick={() => setStep(0)}>Confirm</Button>
+                    <Button className="w-24 text-cool-gray transition duration-300 hover:text-marine-blue" variant={"ghost"} onClick={() => setStep(3)}>Go back</Button>
+                    <Button className="w-24 bg-marine-blue transition ease-in-out duration-300 active:bg-purplish-blue hover:bg-pastel-blue ml-auto" onClick={() => setStep(0)}>Confirm</Button>
                 </div>
             </div>
         </div >
