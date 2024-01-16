@@ -13,15 +13,15 @@ export function StepTwo() {
     const [stateSwitch, setStateSwitch] = useState<boolean>(false)
 
     const { setStep } = useStep()
-    const { setPlanType, personal, setValueType } = useData()
+    const { setPlan, personal, setValueType, valueType } = useData()
 
-    useEffect(() => {
-        if (stateSwitch) {
+    function handleSwitch() {
+        if (valueType === 'M') {
             setValueType('Y')
         } else {
             setValueType('M')
         }
-    }, [stateSwitch])
+    }
 
     return (
         <div className="flex gap-32 h-full">
@@ -33,13 +33,13 @@ export function StepTwo() {
                         <p className="text-cool-gray">Please provide your name, email address, and phone number.</p>
                     </div>
                     <div className="flex gap-2">
-                        <CardPlan image="icon-arcade.svg" title="Arcade" value={!stateSwitch ? "$9/mo" : "$90/yr"} />
-                        <CardPlan image="icon-advanced.svg" title="Advanced" value={!stateSwitch ? "$12/mo" : "$120/yr"} />
-                        <CardPlan image="icon-pro.svg" title="Pro" value={!stateSwitch ? "$15/mo" : "$150/yr"} />
+                        <CardPlan image="icon-arcade.svg" title="Arcade" value={valueType === "M" ? 9 : 90} />
+                        <CardPlan image="icon-advanced.svg" title="Advanced" value={valueType === "M" ? 12 : 120} />
+                        <CardPlan image="icon-pro.svg" title="Pro" value={valueType === "M" ? 15 : 150} />
                     </div>
                     <div className="flex gap-2 items-center justify-center text-sm ">
                         <strong className={`${stateSwitch ? 'text-cool-gray' : 'text-marine-blue'}`}>Monthly</strong>
-                        <Switch onCheckedChange={setStateSwitch} checked={stateSwitch} className="data-[state=checked]:bg-marine-blue data-[state=unchecked]:bg-marine-blue" />
+                        <Switch defaultChecked={valueType === "M" ? false : true} onCheckedChange={handleSwitch} className="data-[state=checked]:bg-marine-blue data-[state=unchecked]:bg-marine-blue" />
                         <strong className={`${!stateSwitch ? 'text-cool-gray' : 'text-marine-blue'}`}>Yearly</strong>
                     </div>
                 </div>

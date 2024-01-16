@@ -18,7 +18,6 @@ export function StepOne() {
     })
 
     async function handlePersonalForm(data: PersonalFormSchema) {
-        console.log(data)
         if (data) {
             setPersonal(data)
             setStep(2)

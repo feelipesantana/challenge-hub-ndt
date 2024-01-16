@@ -1,13 +1,67 @@
 import { useData } from "@/hook/useData"
 import { StepOptions } from "../StepOtions"
 import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
+
+import { useStep } from "@/hook/useStep"
+import { Separator } from "../ui/separator"
+import { useEffect, useState } from "react"
 
 export function StepFour() {
-    const { addons } = useData()
-    console.log("ADDONS", addons)
+    const { addons, personal, plan, valueType } = useData()
+    const { setStep } = useStep()
+    const [total, setTotal] = useState<number>()
+
+    useEffect(() => {
+        const totalAddons = addons.reduce((total, addon) => total + (addon.amount || 0), 0);
+
+        setTotal(totalAddons + plan.amount)
+    }, [])
     return (
-        <div>Step 4</div>
+        <div className="flex gap-32 h-full">
+            <StepOptions />
+            <div className="flex flex-col gap-12 flex-1 p-8">
+                <div className="space-y-2">
+                    <h1 className="font-bold text-3xl">Finishing up</h1>
+                    <p className="text-cool-gray">Double-check everything looks OK before confirming</p>
+                </div>
+
+                <div className=" bg-alabaster p-4 rounded-md">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col items-start gap-0">
+                            <span className="font-medium">{plan.item} {valueType === "M" ? '(Monthly)' : '(Yearly)'}</span>
+                            <Button variant={"link"} onClick={() => setStep(2)} className=" h-6 inline-block text-sm font-medium p-0 underline text-cool-gray">
+                                Change
+                            </Button>
+                        </div>
+                        <strong className="">${plan.amount} {valueType === "M" ? '/mo' : '/yr'}</strong>
+                    </div>
+
+                    <Separator className="my-6" />
+
+                    <ul className="flex flex-col space-y-2 ">
+                        {addons &&
+                            addons.map(res => {
+                                return (
+                                    <li key={res.title} className="flex items-center justify-between w-full ">
+                                        <span className="text-cool-gray text-sm">{res.title}</span>
+                                        <span className=" text-xs">+ ${res.amount} {valueType === 'M' ? '/mo' : '/yr'}</span>
+                                    </li>
+                                )
+                            })
+
+                        }
+                    </ul>
+
+                    <div className="flex justify-between items-center mt-10">
+                        <span className="text-cool-gray text-sm">Total {valueType === 'M' ? '(Per Month)' : '(Per Year)'}</span>
+                        <span className="text-lg text-purplish-blue font-bold">${total}{valueType === 'M' ? '/mo' : '/yr'}</span>
+                    </div>
+                </div>
+                <div className="flex justify-between">
+                    <Button className="w-24 text-cool-gray" variant={"ghost"} onClick={() => setStep(3)}>Go back</Button>
+                    <Button className="w-24 bg-marine-blue hover:bg-marine-blue/90 ml-auto" onClick={() => setStep(0)}>Confirm</Button>
+                </div>
+            </div>
+        </div >
     )
 }

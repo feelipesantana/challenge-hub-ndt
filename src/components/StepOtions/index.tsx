@@ -34,7 +34,7 @@ export function StepOptions() {
                     </div>
                 </li>
                 <li className="flex items-center gap-3">
-                    <div className={`${step === 4 ? 'bg-light-blue text-marine-blue border-transparent' : 'border-white text-white bg-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
+                    <div className={`${step === 4 || step === 0 ? 'bg-light-blue text-marine-blue border-transparent' : 'border-white text-white bg-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
                         4
                     </div>
                     <div className="">
@@ -42,6 +42,7 @@ export function StepOptions() {
                         <span className="text-white text-sm font-bold tracking-wider">SUMMARY</span>
                     </div>
                 </li>
+
             </ul>
         </div>
     )

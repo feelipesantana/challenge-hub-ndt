@@ -1,5 +1,6 @@
 'use client'
 
+import { StepFinish } from '@/components/Steps/StepFinish'
 import { StepFour } from '@/components/Steps/StepFour'
 import { StepOne } from '@/components/Steps/StepOne'
 import { StepThree } from '@/components/Steps/StepThree'
@@ -15,7 +16,8 @@ export default function Home() {
         {step === 1 ? <StepOne />
           : step === 2 ? <StepTwo />
             : step === 3 ? <StepThree />
-              : <StepFour />
+              : step === 4 ? <StepFour />
+                : <StepFinish />
         }
       </div>
     </main >

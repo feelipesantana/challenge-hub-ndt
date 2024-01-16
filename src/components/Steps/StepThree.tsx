@@ -9,10 +9,7 @@ import { useStep } from "@/hook/useStep"
 
 export function StepThree() {
     const { setStep } = useStep()
-    const { personal, planType, valueType, } = useData()
-    useEffect(() => {
-        console.log("VALUE", personal, planType, valueType)
-    }, [])
+    const { personal, plan, valueType, } = useData()
     return (
         <div className="flex gap-32 h-full">
             <StepOptions />
@@ -23,9 +20,9 @@ export function StepThree() {
                 </div>
 
                 <div className="space-y-4">
-                    <CardAddons title="Online service" description="Access to multiplayer games" value={`${valueType === 'M' ? '+$1/mo' : '$10/yr'}`} />
-                    <CardAddons title="Larger storage" description="Extra 1TB cloud save" value={`${valueType === 'M' ? '+$2/mo' : '$20/yr'}`} />
-                    <CardAddons title="Customizable profile" description="Custom theme on your profile" value={`${valueType === 'M' ? '+$2/mo' : '$20/yr'}`} />
+                    <CardAddons title="Online service" description="Access to multiplayer games" value={valueType === 'M' ? 1 : 10} />
+                    <CardAddons title="Larger storage" description="Extra 1TB cloud save" value={valueType === 'M' ? 2 : 20} />
+                    <CardAddons title="Customizable profile" description="Custom theme on your profile" value={valueType === 'M' ? 2 : 20} />
                 </div>
                 <div className="flex justify-between">
                     <Button className="w-24 text-cool-gray" variant={"ghost"} onClick={() => setStep(2)}>Go back</Button>
