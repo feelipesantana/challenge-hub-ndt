@@ -1,22 +1,8 @@
-import { useData } from "@/hook/useData"
-import { StepOptions } from "../StepOtions"
-import { Button } from "../ui/button"
+import { StepOptions } from "../StepOptions"
 
-import { useStep } from "@/hook/useStep"
-import { Separator } from "../ui/separator"
-import { useEffect, useState } from "react"
 import Image from "next/image"
 
 export function StepFinish() {
-    const { addons, personal, plan, valueType } = useData()
-    const { setStep } = useStep()
-    const [total, setTotal] = useState<number>()
-
-    useEffect(() => {
-        const totalAddons = addons.reduce((total, addon) => total + (addon.amount || 0), 0);
-
-        setTotal(totalAddons + plan.amount)
-    }, [])
     return (
         <div className="flex h-full">
             <StepOptions />

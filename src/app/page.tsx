@@ -6,7 +6,6 @@ import { StepOne } from '@/components/Steps/StepOne'
 import { StepThree } from '@/components/Steps/StepThree'
 import { StepTwo } from '@/components/Steps/StepTwo'
 import { useStep } from '@/hook/useStep'
-import Image from 'next/image'
 
 export default function Home() {
   const { step } = useStep()

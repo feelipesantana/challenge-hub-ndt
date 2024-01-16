@@ -1,15 +1,13 @@
-import { useEffect } from "react"
-import { StepOptions } from "../StepOtions"
+import { StepOptions } from "../StepOptions"
 import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
+
 import { useData } from "@/hook/useData"
 import { CardAddons } from "../CardAddons"
 import { useStep } from "@/hook/useStep"
 
 export function StepThree() {
     const { setStep } = useStep()
-    const { personal, plan, valueType, } = useData()
+    const { valueType, } = useData()
     return (
         <div className="flex gap-32 h-full">
             <StepOptions />

@@ -1,5 +1,5 @@
 import { useData } from "@/hook/useData"
-import { StepOptions } from "../StepOtions"
+import { StepOptions } from "../StepOptions"
 import { Button } from "../ui/button"
 
 import { useStep } from "@/hook/useStep"
@@ -7,7 +7,7 @@ import { Separator } from "../ui/separator"
 import { useEffect, useState } from "react"
 
 export function StepFour() {
-    const { addons, personal, plan, valueType } = useData()
+    const { addons, plan, valueType } = useData()
     const { setStep } = useStep()
     const [total, setTotal] = useState<number>()
 

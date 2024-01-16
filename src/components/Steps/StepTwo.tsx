@@ -1,19 +1,14 @@
-'use client'
 import { useStep } from "@/hook/useStep"
-import { StepOptions } from "../StepOtions"
+import { StepOptions } from "../StepOptions"
 
-import { useEffect, useState } from "react"
 import { useData } from "@/hook/useData"
 import { CardPlan } from "../CardPlan"
 import { Switch } from "../ui/switch"
 import { Button } from "../ui/button"
 
-
 export function StepTwo() {
-    const [stateSwitch, setStateSwitch] = useState<boolean>(false)
-
     const { setStep } = useStep()
-    const { setPlan, personal, setValueType, valueType } = useData()
+    const { setValueType, valueType } = useData()
 
     function handleSwitch() {
         if (valueType === 'M') {
@@ -38,9 +33,9 @@ export function StepTwo() {
                         <CardPlan image="icon-pro.svg" title="Pro" value={valueType === "M" ? 15 : 150} />
                     </div>
                     <div className="flex gap-2 items-center justify-center text-sm ">
-                        <strong className={`${stateSwitch ? 'text-cool-gray' : 'text-marine-blue'}`}>Monthly</strong>
+                        <strong className={`${valueType === "Y" ? 'text-cool-gray' : 'text-marine-blue'}`}>Monthly</strong>
                         <Switch defaultChecked={valueType === "M" ? false : true} onCheckedChange={handleSwitch} className="data-[state=checked]:bg-marine-blue data-[state=unchecked]:bg-marine-blue" />
-                        <strong className={`${!stateSwitch ? 'text-cool-gray' : 'text-marine-blue'}`}>Yearly</strong>
+                        <strong className={`${valueType === "M" ? 'text-cool-gray' : 'text-marine-blue'}`}>Yearly</strong>
                     </div>
                 </div>
                 <div className="flex justify-between">

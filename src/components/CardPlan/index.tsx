@@ -9,8 +9,6 @@ interface CardPlanProps {
 }
 
 export function CardPlan({ title, image, value }: CardPlanProps) {
-
-    const [select, setSelect] = useState(false)
     const { plan, setPlan, valueType } = useData()
 
     function handlePlan() {
