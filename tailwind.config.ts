@@ -25,7 +25,7 @@ const config = {
       backgroundPosition:{
         'left-almost-full': 'center left 1rem ',
       },
-
+      
       colors: {
         "marine-blue": "hsl(213, 96%, 18%)",
         "purplish-blue": "hsl(243, 100%, 62%)",

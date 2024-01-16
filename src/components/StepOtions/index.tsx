@@ -16,7 +16,7 @@ export function StepOptions() {
                     </div>
                 </li>
                 <li className="flex items-center gap-3">
-                    <div className={`${step === 2 && 'bg-light-blue text-blue-950 border-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
+                    <div className={`${step === 2 ? 'bg-light-blue text-marine-blue border-transparent' : 'border-white text-white bg-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
                         2
                     </div>
                     <div className="">
@@ -25,7 +25,7 @@ export function StepOptions() {
                     </div>
                 </li>
                 <li className="flex items-center gap-3">
-                    <div className={`${step === 3 && 'bg-light-blue text-blue-950 border-transparent'}  w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
+                    <div className={`${step === 3 ? 'bg-light-blue text-marine-blue border-transparent' : 'border-white text-white bg-transparent'}  w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
                         3
                     </div>
                     <div className="">
@@ -34,7 +34,7 @@ export function StepOptions() {
                     </div>
                 </li>
                 <li className="flex items-center gap-3">
-                    <div className={`${step === 4 && 'bg-light-blue text-blue-950 border-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
+                    <div className={`${step === 4 ? 'bg-light-blue text-marine-blue border-transparent' : 'border-white text-white bg-transparent'} w-8 h-8 border border-white text-white font-bold rounded-full flex items-center justify-center`}>
                         4
                     </div>
                     <div className="">
