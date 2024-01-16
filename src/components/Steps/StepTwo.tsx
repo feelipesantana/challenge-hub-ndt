@@ -19,20 +19,20 @@ export function StepTwo() {
     }
 
     return (
-        <div className="flex gap-32 h-full">
+        <div className="flex gap-12 h-full">
             <StepOptions />
             <div className="flex flex-col justify-between flex-1 p-8">
                 <div className="flex flex-col gap-12 ">
                     <div className="space-y-2">
                         <h1 className="font-bold  text-3xl">Select Plan</h1>
-                        <p className="text-cool-gray">Please provide your name, email address, and phone number.</p>
+                        <p className="text-cool-gray">You have the option of monthly of yearly billing.</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-6 justify-center">
                         <CardPlan image="icon-arcade.svg" title="Arcade" value={valueType === "M" ? 9 : 90} />
                         <CardPlan image="icon-advanced.svg" title="Advanced" value={valueType === "M" ? 12 : 120} />
                         <CardPlan image="icon-pro.svg" title="Pro" value={valueType === "M" ? 15 : 150} />
                     </div>
-                    <div className="flex gap-2 items-center justify-center text-sm ">
+                    <div className="flex gap-2 items-center justify-center text-sm bg-magnolia p-3 rounded-md">
                         <strong className={`${valueType === "Y" ? 'text-cool-gray' : 'text-marine-blue'}`}>Monthly</strong>
                         <Switch defaultChecked={valueType === "M" ? false : true} onCheckedChange={handleSwitch} className="data-[state=checked]:bg-marine-blue data-[state=unchecked]:bg-marine-blue" />
                         <strong className={`${valueType === "M" ? 'text-cool-gray' : 'text-marine-blue'}`}>Yearly</strong>

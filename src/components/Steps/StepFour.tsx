@@ -17,44 +17,46 @@ export function StepFour() {
         setTotal(totalAddons + plan.amount)
     }, [])
     return (
-        <div className="flex gap-32 h-full">
+        <div className="flex gap-12 h-full">
             <StepOptions />
-            <div className="flex flex-col gap-12 flex-1 p-8">
-                <div className="space-y-2">
-                    <h1 className="font-bold text-3xl">Finishing up</h1>
-                    <p className="text-cool-gray">Double-check everything looks OK before confirming</p>
-                </div>
-
-                <div className=" bg-alabaster p-4 rounded-md">
-                    <div className="flex justify-between items-center">
-                        <div className="flex flex-col items-start gap-0">
-                            <span className="font-medium">{plan.item} {valueType === "M" ? '(Monthly)' : '(Yearly)'}</span>
-                            <Button variant={"link"} onClick={() => setStep(2)} className=" h-6 inline-block text-sm font-medium p-0 underline text-cool-gray">
-                                Change
-                            </Button>
-                        </div>
-                        <strong className="">${plan.amount} {valueType === "M" ? '/mo' : '/yr'}</strong>
+            <div className="flex flex-col justify-between gap-12 flex-1 p-8">
+                <div className="flex flex-col gap-12">
+                    <div className="space-y-2">
+                        <h1 className="font-bold text-3xl">Finishing up</h1>
+                        <p className="text-cool-gray">Double-check everything looks OK before confirming</p>
                     </div>
 
-                    <Separator className="my-6" />
+                    <div className=" bg-alabaster p-4 rounded-md">
+                        <div className="flex justify-between items-center">
+                            <div className="flex flex-col items-start gap-0">
+                                <span className="font-medium">{plan.item} {valueType === "M" ? '(Monthly)' : '(Yearly)'}</span>
+                                <Button variant={"link"} onClick={() => setStep(2)} className=" h-6 inline-block text-sm font-medium p-0 underline text-cool-gray">
+                                    Change
+                                </Button>
+                            </div>
+                            <strong className="">${plan.amount} {valueType === "M" ? '/mo' : '/yr'}</strong>
+                        </div>
 
-                    <ul className="flex flex-col space-y-2 ">
-                        {addons &&
-                            addons.map(res => {
-                                return (
-                                    <li key={res.title} className="flex items-center justify-between w-full ">
-                                        <span className="text-cool-gray text-sm">{res.title}</span>
-                                        <span className=" text-xs">+ ${res.amount} {valueType === 'M' ? '/mo' : '/yr'}</span>
-                                    </li>
-                                )
-                            })
+                        <Separator className="my-6" />
 
-                        }
-                    </ul>
+                        <ul className="flex flex-col space-y-2 ">
+                            {addons &&
+                                addons.map(res => {
+                                    return (
+                                        <li key={res.title} className="flex items-center justify-between w-full ">
+                                            <span className="text-cool-gray text-sm">{res.title}</span>
+                                            <span className=" text-xs">+ ${res.amount} {valueType === 'M' ? '/mo' : '/yr'}</span>
+                                        </li>
+                                    )
+                                })
 
-                    <div className="flex justify-between items-center mt-10">
-                        <span className="text-cool-gray text-sm">Total {valueType === 'M' ? '(Per Month)' : '(Per Year)'}</span>
-                        <span className="text-lg text-purplish-blue font-bold">${total}{valueType === 'M' ? '/mo' : '/yr'}</span>
+                            }
+                        </ul>
+
+                        <div className="flex justify-between items-center mt-10">
+                            <span className="text-cool-gray text-sm">Total {valueType === 'M' ? '(Per Month)' : '(Per Year)'}</span>
+                            <span className="text-lg text-purplish-blue font-bold">${total}{valueType === 'M' ? '/mo' : '/yr'}</span>
+                        </div>
                     </div>
                 </div>
                 <div className="flex justify-between">

@@ -23,7 +23,7 @@ export function StepOne() {
         }
     }
     return (
-        <div className="flex gap-32 h-full">
+        <div className="flex gap-12 h-full">
             <StepOptions />
             <div className="flex flex-col gap-12 flex-1 p-8">
                 <div className="space-y-2">

@@ -22,9 +22,9 @@ export function CardPlan({ title, image, value }: CardPlanProps) {
     }, [valueType])
 
     return (
-        <Card className={`${plan.item === title ? 'border-marine-blue' : 'border-light-gray'} border rounded-md cursor-pointer w-full`} onClick={handlePlan} >
+        <Card className={`${plan.item === title ? 'border-marine-blue' : 'border-light-gray'} border rounded-md cursor-pointer w-[130px] h-[180px] flex flex-col justify-between`} onClick={handlePlan} >
             <CardHeader>
-                <CardTitle><Image src={`/assets/icons/${image}`} width={20} height={20} alt="Image Title Card" /></CardTitle>
+                <CardTitle><Image src={`/assets/icons/${image}`} width={40} height={40} alt="Image Title Card" /></CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-1">
                 <strong className="text-marine-blue text-sm">{title} </strong>
