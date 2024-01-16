@@ -18,7 +18,9 @@ export function CardPlan({ title, image, value }: CardPlanProps) {
     }
 
     useEffect(() => {
-        setPlan({ item: title, amount: value })
+        if (plan.item === title) {
+            setPlan({ item: title, amount: value })
+        }
     }, [valueType])
 
     return (
